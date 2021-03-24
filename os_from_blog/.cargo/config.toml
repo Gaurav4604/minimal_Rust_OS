@@ -1,0 +1,10 @@
+[unstable]
+build-std = ["core", "compiler_builtins"] #this is required to use the core library
+build-std-features = ["compiler-builtins-mem"] # this allows us to use all the C lang dependent features for memory access
+
+[build]
+target = 'x86_64_os_setup_file.json'
+
+[target.'cfg(target_os = "none")']
+runner = "bootimage runner"
+
