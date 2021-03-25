@@ -1,13 +1,14 @@
+#![no_std]
+// since we are not using std
+// we need to implement our own panic handler
 #![no_main] 
 // Rust requires C lang runtime to initialize std
 // since we are not using std, we overwrite the entry point
 
-#![no_std]
-// since we are not using std
-// we need to implement our own panic handler
-
-
 use core::panic::PanicInfo; //this parameter tells at what line the panic occured
+
+mod vga_buffer;
+
 
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! { 
