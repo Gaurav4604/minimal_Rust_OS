@@ -7,4 +7,3 @@ target = 'x86_64_os_setup_file.json'
 
 [target.'cfg(target_os = "none")']
 runner = "bootimage runner"
-

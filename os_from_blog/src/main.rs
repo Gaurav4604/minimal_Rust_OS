@@ -17,7 +17,7 @@ fn panic(_info: &PanicInfo) -> ! {
 }
 
 
-static HELLO: &[u8] = b"Hello World This is Gaurav Singh"; //ascii value buffer for ** hello world **
+static HELLO: &[u8] = b"Hello World This is our project {}"; //ascii value buffer for the same
 
 #[no_mangle] 
 // since we want to make sure that _start is the first function
@@ -26,13 +26,16 @@ pub extern "C" fn _start() -> ! {
     // we use "C" extern as we want to implement C lang calling convention
     // linker will use this _start as the entry point of program
 
-    let vga_buffer = 0xb8000 as *mut u8; // 0xb8000 is casted into a raw pointer
-    for (i, &byte) in HELLO.iter().enumerate() {
-        unsafe {
-            *vga_buffer.offset(i as isize*2) = byte;
-            *vga_buffer.offset(i as isize*2 + 1) = 0xa;
-        }
-    }
+    // let vga_buffer = 0xb8000 as *mut u8; // 0xb8000 is casted into a raw pointer
+    // for (i, &byte) in HELLO.iter().enumerate() {
+    //     unsafe {
+    //         *vga_buffer.offset(i as isize*2) = byte;
+    //         *vga_buffer.offset(i as isize*2 + 1) = 0xa;
+    //     }
+    // }
+    println!("Hello world");
+    println!("this is formatted text \n{}, {}", "Oh", "yeah!");
+    println!("Some calculations -> {} + {} => {}", 42, 24, (24 + 42));
     loop{}
 }
 
